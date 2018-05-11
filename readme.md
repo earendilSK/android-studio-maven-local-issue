@@ -14,18 +14,24 @@ Windows 10 10.0
 Steps to reproduce:
 1. enter sample-library folder
 2. in console run gradlew publishToMavenLocal
-4. Import application project to Android Studio
-5. Install to device and observe number 1 on screen
-6. Back in library project edit sample-library\library\src\main\java\com\android\sample\Test.java > change value to "2"
+4. Import application project to Android Studio and build the project
+6. Back in library project uncomment sample-library\library\src\main\java\com\android\sample\Test.java
+```
+public static final String TEXT_VALUE = "a";
+```
 7. run gradlew publishToMavenLocal again
 8. In Android Studio (application project) hit (Refresh all Gradle projects) (does nothing)
 9. Inspect version not changed > Project selector > External libraries > com.android.sample:library:1.0.0-SNAPSHOT > com.android.sample.Test
 ```
 package com.android.sample;
 public class Test {
-    public static final String VALUE = "1";
+    public static final int VALUE = 1;
     public Test() {
     }
 }
 ```
-10. Run install again, observe value changed to "2"
+10. Uncomment line
+```
+textView.setText(String.valueOf(Test.TEXT_VALUE));
+```
+and observe Test.TEXT_VALUE is not defined

@@ -15,5 +15,6 @@ public class MainActivity extends AppCompatActivity {
 
         TextView textView = findViewById(R.id.textValue);
         textView.setText(String.valueOf(Test.VALUE));
+//        textView.setText(String.valueOf(Test.TEXT_VALUE));
     }
 }
