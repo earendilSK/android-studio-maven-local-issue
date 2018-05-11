@@ -1,0 +1,23 @@
+apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
+apply plugin: 'digital.wup.android-maven-publish'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 27
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+}
+
+publishing {
+    publications {
+        mavenAar(MavenPublication) {
+            from components.android
+            groupId 'com.android.sample'
+            artifactId "${project.name}"
+            version '1.0.0-SNAPSHOT'
+        }
+    }
+}
